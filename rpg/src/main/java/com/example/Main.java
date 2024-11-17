@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Bienvenue dans le RPG Text-Based !");
+        System.out.println("Bienvenue dans le RPG Hawkaria !");
 
         // Création du joueur
         System.out.print("Entrez le nom de votre personnage : ");
@@ -73,6 +73,6 @@ public class Main {
             }
         }
 
-        System.out.println("Merci d'avoir joué au RPG Text-Based !");
+        System.out.println("Merci d'avoir joué au RPG Hawkaria !");
     }
 }
