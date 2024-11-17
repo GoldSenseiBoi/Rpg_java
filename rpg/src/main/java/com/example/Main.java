@@ -28,38 +28,43 @@ public class Main {
         }
 
         // Création de la carte du donjon
-        DungeonMap dungeonMap = new DungeonMap(5, 5);
+        DungeonMap dungeonMap = new DungeonMap(10, 20); // Créer une carte plus grande
 
         // Boucle principale du jeu
         boolean playing = true;
         while (playing && player.isAlive()) {
             dungeonMap.displayMap();
-            System.out.println("\nQue voulez-vous faire ? (haut/bas/gauche/droite/inventaire/quitter)");
-            String action = scanner.nextLine();
+            System.out.println("\nUtilisez Z (haut), Q (gauche), S (bas), D (droite), ou T pour quitter : ");
+            char command = scanner.nextLine().toLowerCase().charAt(0);
 
-            switch (action.toLowerCase()) {
-                case "haut":
-                case "bas":
-                case "gauche":
-                case "droite":
-                    dungeonMap.movePlayer(action, player);
-                    if (dungeonMap.hasEncounteredMonster()) {
-                        Monster monster = dungeonMap.getCurrentMonster();
-                        CombatSystem.combat(player, monster);
-                        if (!monster.isAlive()) {
-                            dungeonMap.clearCurrentMonster();
-                        }
-                    }
+            switch (command) {
+                case 'z':
+                    dungeonMap.movePlayer("haut", player);
                     break;
-                case "inventaire":
-                    player.displayInventory();
+                case 's':
+                    dungeonMap.movePlayer("bas", player);
                     break;
-                case "quitter":
+                case 'q':
+                    dungeonMap.movePlayer("gauche", player);
+                    break;
+                case 'd':
+                    dungeonMap.movePlayer("droite", player);
+                    break;
+                case 't':
                     playing = false;
+                    System.out.println("Vous avez quitté le donjon.");
                     break;
                 default:
-                    System.out.println("Action invalide !");
+                    System.out.println("Commande invalide ! Utilisez Z, Q, S, D ou T.");
                     break;
+            }
+
+            if (dungeonMap.hasEncounteredMonster()) {
+                Monster monster = dungeonMap.getCurrentMonster();
+                CombatSystem.combat(player, monster);
+                if (!monster.isAlive()) {
+                    dungeonMap.clearCurrentMonster();
+                }
             }
 
             if (dungeonMap.hasReachedExit()) {

@@ -76,4 +76,9 @@ public class Player {
     public void reduceGold(int amount) {
         gold -= amount;
     }
+
+    public void increaseHealth(int amount) {
+        health += amount;
+        System.out.println(name + " récupère " + amount + " points de vie. Santé actuelle : " + health);
+    }
 }

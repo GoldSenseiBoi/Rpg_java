@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DungeonMap",
+            "request": "launch",
+            "mainClass": "com.example.DungeonMap",
+            "projectName": "rpg"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "com.example.Main",
